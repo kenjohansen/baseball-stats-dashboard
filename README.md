@@ -1,3 +1,5 @@
+![Baseball Stats Dashboard](images/banner.jpg)
+
 # Baseball Stats Dashboard
 
 A full-stack application that displays baseball player statistics with AI-enhanced player descriptions, built with React, Python FastAPI, and MongoDB.
