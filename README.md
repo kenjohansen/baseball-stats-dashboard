@@ -1,8 +1,6 @@
 # Baseball Stats Dashboard
 
-![Project Banner](docs/images/project-banner.png)
-
-A full-stack application that displays baseball player statistics with AI-enhanced player descriptions, built with React, Python FastAPI, and PostgreSQL.
+A full-stack application that displays baseball player statistics with AI-enhanced player descriptions, built with React, Python FastAPI, and MongoDB.
 
 ## 🚀 Features
 
@@ -23,8 +21,8 @@ A full-stack application that displays baseball player statistics with AI-enhanc
 
 ### Backend
 - Python FastAPI for high-performance API
-- PostgreSQL for data persistence
-- SQLAlchemy ORM
+- MongoDB for data persistence
+- Motor for asynchronous MongoDB operations
 - Pydantic for data validation
 - OpenAI integration for player descriptions
 
@@ -38,15 +36,9 @@ A full-stack application that displays baseball player statistics with AI-enhanc
 
 This project was originally developed as a technical challenge with a 24-hour time constraint. It has since been enhanced with additional features, improved architecture, and professional documentation to serve as a portfolio piece demonstrating full-stack development capabilities.
 
-## 🖼️ Screenshots
-
-![Dashboard View](docs/images/dashboard.png)
-![Player Details](docs/images/player-details.png)
-![Edit Interface](docs/images/edit-interface.png)
-
 ## 🏗️ Architecture
 
-![Architecture Diagram](docs/images/architecture.png)
+For detailed architecture diagrams, see [Architecture Diagrams](docs/architecture-diagram.md).
 
 The application follows a clean architecture pattern with clear separation of concerns:
 

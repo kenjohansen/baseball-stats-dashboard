@@ -2,6 +2,30 @@
 
 This guide provides step-by-step instructions for setting up and running the Baseball Stats Dashboard project in different environments.
 
+## Setup Options Overview
+
+```mermaid
+flowchart TD
+    Start([Start Setup]) --> Choice{Choose Setup Method}
+    Choice -->|Local Development| Local[Local Development]
+    Choice -->|Docker| Docker[Docker Compose]
+    Choice -->|Production| K8s[Kubernetes]
+    
+    Local --> FrontendLocal[Setup Frontend]
+    Local --> BackendLocal[Setup Backend]
+    Local --> MongoLocal[Setup MongoDB]
+    
+    Docker --> DockerCompose[Run Docker Compose]
+    
+    K8s --> HelmChart[Deploy with Helm]
+    
+    style Start fill:#4CAF50,stroke:#333,stroke-width:2px
+    style Choice fill:#FF9800,stroke:#333,stroke-width:2px
+    style Local fill:#2196F3,stroke:#333,stroke-width:2px
+    style Docker fill:#2196F3,stroke:#333,stroke-width:2px
+    style K8s fill:#2196F3,stroke:#333,stroke-width:2px
+```
+
 ## Prerequisites
 
 - Node.js (v16+)
@@ -12,6 +36,26 @@ This guide provides step-by-step instructions for setting up and running the Bas
 - OpenAI API key
 
 ## Local Development Setup
+
+```mermaid
+sequenceDiagram
+    participant Dev as Developer
+    participant FE as Frontend
+    participant BE as Backend
+    participant DB as MongoDB
+    
+    Dev->>DB: Start MongoDB
+    Dev->>BE: Setup Python venv
+    Dev->>BE: Install dependencies
+    Dev->>BE: Configure environment
+    Dev->>BE: Start FastAPI server
+    Dev->>FE: Install npm packages
+    Dev->>FE: Configure environment
+    Dev->>FE: Start React dev server
+    
+    BE->>DB: Connect
+    FE->>BE: API Requests
+```
 
 ### Frontend Setup
 
@@ -95,6 +139,26 @@ This guide provides step-by-step instructions for setting up and running the Bas
 
 ## Docker Compose Setup (Recommended for Development)
 
+```mermaid
+graph TD
+    subgraph "Docker Compose Environment"
+        Frontend["Frontend Container<br>React App on Nginx"]
+        Backend["Backend Container<br>FastAPI on Uvicorn"]
+        MongoDB["MongoDB Container"]
+        
+        Frontend -->|"Port 80:3000"| User
+        User -->|"localhost:80"| Frontend
+        Frontend -->|"API Requests"| Backend
+        Backend -->|"Port 8000"| Frontend
+        Backend -->|"Queries"| MongoDB
+    end
+    
+    style Frontend fill:#61dafb,stroke:#333,stroke-width:2px
+    style Backend fill:#009688,stroke:#333,stroke-width:2px
+    style MongoDB fill:#4DB33D,stroke:#333,stroke-width:2px
+    style User fill:#ff9800,stroke:#333,stroke-width:2px
+```
+
 1. Make sure Docker and Docker Compose are installed.
 
 2. Create a `.env` file in the project root with your OpenAI API key:
@@ -118,6 +182,41 @@ This guide provides step-by-step instructions for setting up and running the Bas
    ```
 
 ## Kubernetes Deployment (Production)
+
+```mermaid
+graph TD
+    subgraph "Kubernetes Cluster"
+        Ingress["Ingress Controller"]
+        FrontendSvc["Frontend Service"]
+        BackendSvc["Backend Service"]
+        FrontendPods["Frontend Pods"]
+        BackendPods["Backend Pods"]
+        MongoDB["MongoDB StatefulSet"]
+        ConfigMaps["ConfigMaps"]
+        Secrets["Secrets"]
+        
+        Ingress --> FrontendSvc
+        Ingress --> BackendSvc
+        FrontendSvc --> FrontendPods
+        BackendSvc --> BackendPods
+        BackendPods --> MongoDB
+        ConfigMaps --> BackendPods
+        Secrets --> BackendPods
+        Secrets --> MongoDB
+    end
+    
+    User["External User"] --> Ingress
+    
+    style Ingress fill:#326CE5,stroke:#333,stroke-width:2px
+    style FrontendSvc fill:#326CE5,stroke:#333,stroke-width:2px
+    style BackendSvc fill:#326CE5,stroke:#333,stroke-width:2px
+    style FrontendPods fill:#326CE5,stroke:#333,stroke-width:2px
+    style BackendPods fill:#326CE5,stroke:#333,stroke-width:2px
+    style MongoDB fill:#326CE5,stroke:#333,stroke-width:2px
+    style ConfigMaps fill:#326CE5,stroke:#333,stroke-width:2px
+    style Secrets fill:#326CE5,stroke:#333,stroke-width:2px
+    style User fill:#ff9800,stroke:#333,stroke-width:2px
+```
 
 1. Update the Kubernetes secrets in `k8s/secrets.yaml` with your MongoDB URI and OpenAI API key:
    ```bash

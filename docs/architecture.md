@@ -4,55 +4,63 @@
 
 The Baseball Stats Dashboard follows a modern microservices architecture with clear separation of concerns:
 
-```
-┌─────────────────┐      ┌─────────────────┐      ┌─────────────────┐
-│                 │      │                 │      │                 │
-│  React Frontend │◄────►│  FastAPI Backend│◄────►│   PostgreSQL    │
-│                 │      │                 │      │                 │
-└─────────────────┘      └────────┬────────┘      └─────────────────┘
-                                  │
-                                  ▼
-                         ┌─────────────────┐
-                         │                 │
-                         │   OpenAI API    │
-                         │                 │
-                         └─────────────────┘
+```mermaid
+graph LR
+    Frontend["React Frontend"]
+    Backend["FastAPI Backend"]
+    Database["MongoDB"]
+    OpenAI["OpenAI API"]
+    
+    Frontend <--> Backend
+    Backend <--> Database
+    Backend --> OpenAI
+    
+    style Frontend fill:#61dafb,stroke:#333,stroke-width:2px
+    style Backend fill:#009688,stroke:#333,stroke-width:2px
+    style Database fill:#4DB33D,stroke:#333,stroke-width:2px
+    style OpenAI fill:#74aa9c,stroke:#333,stroke-width:2px
 ```
 
 ### Frontend Architecture
 
 The React frontend follows a component-based architecture with hooks for state management:
 
-```
-┌─────────────────────────────────────────────────┐
-│                  App Component                   │
-├─────────────────────────────────────────────────┤
-│                                                 │
-│  ┌─────────────┐  ┌─────────────┐  ┌──────────┐ │
-│  │             │  │             │  │          │ │
-│  │ Player List │  │Player Detail│  │  Edit    │ │
-│  │             │  │             │  │  Form    │ │
-│  └─────────────┘  └─────────────┘  └──────────┘ │
-│                                                 │
-└─────────────────────────────────────────────────┘
+```mermaid
+graph TD
+    App["App Component"]
+    PlayerList["Player List"]
+    PlayerDetail["Player Detail"]
+    EditForm["Edit Form"]
+    
+    App --> PlayerList
+    App --> PlayerDetail
+    App --> EditForm
+    
+    style App fill:#61dafb,stroke:#333,stroke-width:2px
+    style PlayerList fill:#61dafb,stroke:#333,stroke-width:2px
+    style PlayerDetail fill:#61dafb,stroke:#333,stroke-width:2px
+    style EditForm fill:#61dafb,stroke:#333,stroke-width:2px
 ```
 
 ### Backend Architecture
 
-The FastAPI backend follows a layered architecture:
+The FastAPI backend follows a layered architecture with clear separation of concerns:
 
-```
-┌─────────────────────────────────────────────────┐
-│                  API Layer                       │
-├─────────────────────────────────────────────────┤
-│                                                 │
-│  ┌─────────────┐  ┌─────────────┐  ┌──────────┐ │
-│  │             │  │             │  │          │ │
-│  │ Services    │  │ Repositories│  │ External │ │
-│  │             │  │             │  │ APIs     │ │
-│  └─────────────┘  └─────────────┘  └──────────┘ │
-│                                                 │
-└─────────────────────────────────────────────────┘
+```mermaid
+graph TD
+    API["API Layer"]
+    Service["Service Layer"]
+    Data["Data Access Layer"]
+    External["External Services"]
+    
+    API --> Service
+    Service --> Data
+    Service --> External
+    
+    style API fill:#009688,stroke:#333,stroke-width:2px
+    style Service fill:#009688,stroke:#333,stroke-width:2px
+    style Data fill:#009688,stroke:#333,stroke-width:2px
+    style External fill:#74aa9c,stroke:#333,stroke-width:2px
 ```
 
 ## Data Flow
@@ -82,13 +90,13 @@ React with TypeScript provides:
 - Better developer experience with IDE support
 - Easier maintenance and refactoring
 
-### 3. PostgreSQL Database
+### 3. MongoDB Database
 
-PostgreSQL offers:
-- ACID compliance
-- JSON support for flexible data storage
+MongoDB offers:
+- Flexible schema for dynamic data
+- High performance for large data sets
 - Strong indexing capabilities
-- Excellent performance for read-heavy operations
+- Excellent support for real-time updates
 
 ### 4. Kubernetes Deployment
 

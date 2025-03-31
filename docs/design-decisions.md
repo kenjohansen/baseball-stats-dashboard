@@ -4,6 +4,43 @@ This document outlines the key design decisions made during the development of t
 
 ## Technology Stack
 
+```mermaid
+graph TD
+    subgraph "Frontend"
+        React["React + TypeScript"]
+        MaterialUI["Material UI"]
+        Axios["Axios"]
+        Testing["Jest + React Testing Library"]
+    end
+    
+    subgraph "Backend"
+        FastAPI["FastAPI"]
+        MongoDB["MongoDB + Motor"]
+        Pydantic["Pydantic"]
+        OpenAI["OpenAI API"]
+    end
+    
+    subgraph "DevOps"
+        Docker["Docker"]
+        K8s["Kubernetes"]
+        Helm["Helm Charts"]
+    end
+    
+    style React fill:#61dafb,stroke:#333,stroke-width:2px
+    style MaterialUI fill:#0081cb,stroke:#333,stroke-width:2px
+    style Axios fill:#5a29e4,stroke:#333,stroke-width:2px
+    style Testing fill:#c21325,stroke:#333,stroke-width:2px
+    
+    style FastAPI fill:#009688,stroke:#333,stroke-width:2px
+    style MongoDB fill:#4DB33D,stroke:#333,stroke-width:2px
+    style Pydantic fill:#e92063,stroke:#333,stroke-width:2px
+    style OpenAI fill:#74aa9c,stroke:#333,stroke-width:2px
+    
+    style Docker fill:#2496ed,stroke:#333,stroke-width:2px
+    style K8s fill:#326CE5,stroke:#333,stroke-width:2px
+    style Helm fill:#0F1689,stroke:#333,stroke-width:2px
+```
+
 ### Frontend
 
 1. **React with TypeScript**
@@ -38,9 +75,38 @@ This document outlines the key design decisions made during the development of t
 
 ## Architecture Decisions
 
+```mermaid
+graph TD
+    subgraph "Architecture Patterns"
+        Microservices["Microservices Architecture"]
+        API["RESTful API Design"]
+        Async["Async Database Operations"]
+        Error["Comprehensive Error Handling"]
+        Testing["Test-Driven Development"]
+    end
+    
+    subgraph "Infrastructure Decisions"
+        Docker["Containerization"]
+        K8s["Kubernetes Orchestration"]
+        Helm["Helm for Deployment"]
+        CI["GitHub Actions CI/CD"]
+    end
+    
+    style Microservices fill:#ff9800,stroke:#333,stroke-width:2px
+    style API fill:#ff9800,stroke:#333,stroke-width:2px
+    style Async fill:#ff9800,stroke:#333,stroke-width:2px
+    style Error fill:#ff9800,stroke:#333,stroke-width:2px
+    style Testing fill:#ff9800,stroke:#333,stroke-width:2px
+    
+    style Docker fill:#2496ed,stroke:#333,stroke-width:2px
+    style K8s fill:#326CE5,stroke:#333,stroke-width:2px
+    style Helm fill:#0F1689,stroke:#333,stroke-width:2px
+    style CI fill:#2088FF,stroke:#333,stroke-width:2px
+```
+
 1. **Microservices Architecture**
    - **Decision**: Split the application into separate frontend and backend services.
-   - **Rationale**: This separation allows independent scaling, deployment, and technology choices for each component. It also enables clear separation of concerns between UI and business logic.
+   - **Rationale**: This separation allows independent scaling, deployment, and technology choices for each component. It also enables better team collaboration with clear boundaries.
 
 2. **RESTful API Design**
    - **Decision**: Implement a RESTful API for the backend.
