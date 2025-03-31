@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baseball Stats Dashboard Banner</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        .banner-container {
+            width: 1200px;
+            height: 630px;
+            background: linear-gradient(135deg, #0d47a1, #1976d2);
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .banner-content {
+            padding: 60px;
+            color: white;
+            position: relative;
+            z-index: 2;
+            height: 100%;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .banner-title {
+            font-size: 72px;
+            font-weight: 700;
+            margin: 0;
+            line-height: 1.1;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .banner-subtitle {
+            font-size: 32px;
+            font-weight: 400;
+            margin: 20px 0 0;
+            opacity: 0.9;
+        }
+        
+        .tech-stack {
+            display: flex;
+            gap: 20px;
+            margin-top: 40px;
+        }
+        
+        .tech-badge {
+            background-color: rgba(255, 255, 255, 0.15);
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: 500;
+            backdrop-filter: blur(5px);
+        }
+        
+        .banner-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+        
+        .author {
+            font-size: 24px;
+            opacity: 0.8;
+        }
+        
+        .github-link {
+            background-color: white;
+            color: #0d47a1;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+        
+        .github-link:hover {
+            background-color: #f5f5f5;
+            transform: translateY(-2px);
+        }
+        
+        .baseball-graphic {
+            position: absolute;
+            top: 50px;
+            right: 50px;
+            width: 300px;
+            height: 300px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .baseball-seams {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+        }
+        
+        .baseball-seam {
+            position: absolute;
+            background-color: rgba(255, 0, 0, 0.7);
+            height: 2px;
+            width: 100%;
+            top: 50%;
+            transform-origin: center;
+        }
+        
+        .seam-1 {
+            transform: rotate(0deg);
+        }
+        
+        .seam-2 {
+            transform: rotate(60deg);
+        }
+        
+        .seam-3 {
+            transform: rotate(120deg);
+        }
+        
+        .pattern-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.05;
+            background-image: radial-gradient(circle, white 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="banner-container">
+        <div class="pattern-bg"></div>
+        
+        <div class="baseball-graphic">
+            <div class="baseball-seams">
+                <div class="baseball-seam seam-1"></div>
+                <div class="baseball-seam seam-2"></div>
+                <div class="baseball-seam seam-3"></div>
+            </div>
+        </div>
+        
+        <div class="banner-content">
+            <div>
+                <h1 class="banner-title">Baseball Stats Dashboard</h1>
+                <p class="banner-subtitle">Interactive player statistics with AI-generated descriptions</p>
+                
+                <div class="tech-stack">
+                    <div class="tech-badge">React</div>
+                    <div class="tech-badge">FastAPI</div>
+                    <div class="tech-badge">MongoDB</div>
+                    <div class="tech-badge">Kubernetes</div>
+                    <div class="tech-badge">OpenAI</div>
+                </div>
+            </div>
+            
+            <div class="banner-footer">
+                <div class="author">By Ken Johansen</div>
+                <a href="https://github.com/kenjohansen/baseball-stats-dashboard" class="github-link">View on GitHub</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
